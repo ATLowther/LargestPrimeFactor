@@ -1,5 +1,3 @@
-//Currently not functioning properly. Needs work.
-
 import java.util.Scanner;
 
 public class Practice {
