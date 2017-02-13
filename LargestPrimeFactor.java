@@ -38,7 +38,7 @@ public class LargestPrimeFactor {
 		{
 			return false;
 		}
-		else if (temp <= 3)			
+		else if ((temp == 2) || (temp == 3))			
 		{
 			return true;
 		}
