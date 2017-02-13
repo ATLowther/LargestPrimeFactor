@@ -3,98 +3,67 @@ import java.util.Scanner;
 public class Practice {
 
 	public static void main(String[] args) 
-	{
+	{	
 		Scanner input = new Scanner(System.in);
-		System.out.print("Enter a number: ");
-		long check = input.nextLong();
+		System.out.print("Enter number: ");
+		double check = input.nextDouble();
 		input.close();
-		long checkClone = check;
-		if (!(isEven(checkClone)))
+		double checkClone = Math.ceil(Math.sqrt(check));
+		for (double temp = checkClone; temp > 0; temp--)
 		{
-			checkClone = setEven(checkClone);
-		}
-		checkClone /= 2;
-		if (isEven(checkClone)) 
-		{
-			checkClone--;
-		}	
-		
-		long start = 3;
-		for(long temp = checkClone; temp > 0; temp -= 2)
-		{	
-			System.out.println(temp);
 			boolean factor = isFactor(check, temp);
-			if(!(factor) && !(isFactor(check, start))) 			
-			{
-				long fix = speedUp(check, start);
-				temp = (temp - fix) - 1;				
-				if (isEven(temp))
-				{
-					temp -= 1;
-				}
-				start += 2;
-			}
-			else if (factor)
+			if (factor)
 			{
 				boolean prime = isPrime(temp);
-				if (prime) 
+				if (prime)
 				{
 					System.out.println((long)temp);
 					break;
-				}					
-			}				
-		}				
-	}
-		
-			
-	
-	public static boolean isPrime(long x) 
-	{
-			long total = 0;
-			for(long temp = 1; (temp <= x) && !(total >= 3); temp += 2) 
-			{
-				if (x % temp == 0)
-				{
-					total += 1;
-				}				
+				}
 			}
-			return (total == 2);
-						
+			
+		}
+
+	}
+	
+	public static boolean isFactor(double original, double tester) 
+	{
+		return (original % tester == 0);
 	}	
 	
-	public static boolean isFactor(long original, long prime) 
-	{
-		return (original % prime == 0);
-	}
 	
-	public static boolean isEven(long input) 
+	public static boolean isPrime(double temp) 
 	{
-		if (!(input % 2 == 0)) 
+		if (temp <= 1)
 		{
 			return false;
 		}
+		else if (temp <= 3)			
+		{
+			return true;
+		}
+		else if ((temp % 2 == 0) || (temp % 3 ==0))
+		{
+			return false;
+		}
+		else if (temp % 10 == 5) 
+		{
+			return false;
+		}
+		double y = 5.0;
+		while ((y * y) <= temp) 
+		{			
+			if ((temp % y == 0) || (temp % (y + 2) == 0)) 
+			{
+				return false;
+			}
+			y += 6;
+		}
 		return true;
 	}
-	
-	public static long setEven(long input) 
-	{
-		if (!isEven(input))
-		{
-			return (input + 1);		
-		}	
-		return input;
-	}
-	
-	public static long speedUp(long original, long tester)
-	{
-		if (tester == 1)
-		{
-			tester -= 1;
-		}
-		long test1 = (original / tester);
-		long test2 = (original / (tester + 2));
-		return (test2 - (test1 - 1));
-		
-	}
-
 }
+
+
+
+
+
