@@ -2,7 +2,7 @@
 public class SmallestMultiple {
 
 	public static void main(String[] args) {
-		
+
 		for (int a = 20; ; a += 2)
 		{
 			if (a % 1 == 0) 
@@ -67,6 +67,6 @@ public class SmallestMultiple {
 					}
 				}
 			}
-		}
+		} 
 	}
 }
